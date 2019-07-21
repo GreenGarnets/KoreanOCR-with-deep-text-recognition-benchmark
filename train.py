@@ -4,6 +4,7 @@ import time
 import random
 import string
 import argparse
+import codecs
 
 import torch
 import torch.backends.cudnn as cudnn
@@ -29,7 +30,7 @@ def train(opt):
     valid_loader = torch.utils.data.DataLoader(
         valid_dataset, batch_size=opt.batch_size,
         shuffle=True,  # 'True' to check training progress with validation function.
-        num_workers=int(opt.workers),
+        num_workers= 0,#int(opt.workers),
         collate_fn=AlignCollate_valid, pin_memory=True)
     print('-' * 80)
 
@@ -68,8 +69,8 @@ def train(opt):
     if opt.continue_model != '':
         print(f'loading pretrained model from {opt.continue_model}')
         model.load_state_dict(torch.load(opt.continue_model))
-    print("Model:")
-    print(model)
+    #print("Model:")
+    #print(model)
 
     """ setup loss """
     if 'CTC' in opt.Prediction:
@@ -110,7 +111,9 @@ def train(opt):
     """ start training """
     start_iter = 0
     if opt.continue_model != '':
-        start_iter = int(opt.continue_model.split('_')[-1].split('.')[0])
+        #print(opt.continue_model)
+        #start_iter = int(opt.continue_model.split('_')[-1].split('.')[0])
+        start_iter = 139600
         print(f'continue to train, start_iter: {start_iter}')
 
     start_time = time.time()
@@ -203,7 +206,7 @@ if __name__ == '__main__':
     parser.add_argument('--workers', type=int, help='number of data loading workers', default=4)
     parser.add_argument('--batch_size', type=int, default=192, help='input batch size')
     parser.add_argument('--num_iter', type=int, default=300000, help='number of iterations to train for')
-    parser.add_argument('--valInterval', type=int, default=2000, help='Interval between each validation')
+    parser.add_argument('--valInterval', type=int, default=100, help='Interval between each validation')
     parser.add_argument('--continue_model', default='', help="path to model to continue training")
     parser.add_argument('--adam', action='store_true', help='Whether to use adam (default is Adadelta)')
     parser.add_argument('--lr', type=float, default=1, help='learning rate, default=1.0 for Adadelta')
@@ -222,10 +225,9 @@ if __name__ == '__main__':
     parser.add_argument('--imgH', type=int, default=32, help='the height of the input image')
     parser.add_argument('--imgW', type=int, default=100, help='the width of the input image')
     parser.add_argument('--rgb', action='store_true', help='use rgb input')
-    parser.add_argument('--character', type=str, default='0123456789abcdefghijklmnopqrstuvwxyz', help='character label')
+    parser.add_argument('--character', type=str, default='', help='character label')
     parser.add_argument('--sensitive', action='store_true', help='for sensitive character mode')
     parser.add_argument('--PAD', action='store_true', help='whether to keep ratio then pad for image resize')
-    parser.add_argument('--data_filtering_off', action='store_true', help='for data_filtering_off mode')
     """ Model Architecture """
     parser.add_argument('--Transformation', type=str, required=True, help='Transformation stage. None|TPS')
     parser.add_argument('--FeatureExtraction', type=str, required=True, help='FeatureExtraction stage. VGG|RCNN|ResNet')
@@ -245,6 +247,9 @@ if __name__ == '__main__':
         # print(opt.experiment_name)
 
     os.makedirs(f'./saved_models/{opt.experiment_name}', exist_ok=True)
+
+    f = codecs.open("koreanCodec.txt","r","cp949")
+    opt.character = f.read()
 
     """ vocab / character number configuration """
     if opt.sensitive:

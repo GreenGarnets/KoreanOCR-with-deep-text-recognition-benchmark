@@ -9,6 +9,7 @@ from utils import CTCLabelConverter, AttnLabelConverter
 from dataset import RawDataset, AlignCollate
 from model import Model
 
+import codecs
 
 def demo(opt):
     """ model configuration """
@@ -75,6 +76,7 @@ def demo(opt):
             if 'Attn' in opt.Prediction:
                 pred = pred[:pred.find('[s]')]  # prune after "end of sentence" token ([s])
 
+            # 139600에서 멈춤
             print(f'{img_name}\t{pred}')
 
 
@@ -99,13 +101,14 @@ if __name__ == '__main__':
     parser.add_argument('--Prediction', type=str, required=True, help='Prediction stage. CTC|Attn')
     parser.add_argument('--num_fiducial', type=int, default=20, help='number of fiducial points of TPS-STN')
     parser.add_argument('--input_channel', type=int, default=1, help='the number of input channel of Feature extractor')
-    parser.add_argument('--output_channel', type=int, default=512,
-                        help='the number of output channel of Feature extractor')
+    parser.add_argument('--output_channel', type=int, default=512, help='the number of output channel of Feature extractor')
     parser.add_argument('--hidden_size', type=int, default=256, help='the size of the LSTM hidden state')
 
     opt = parser.parse_args()
 
     """ vocab / character number configuration """
+    f = codecs.open("koreanCodec.txt","r","cp949")
+    opt.character = f.read()
     if opt.sensitive:
         opt.character = string.printable[:-6]  # same with ASTER setting (use 94 char).
 
