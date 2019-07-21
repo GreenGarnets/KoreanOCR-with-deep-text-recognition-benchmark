@@ -1,3 +1,23 @@
+# Korean OCR with clova ai's deep-text-recognition-benchmark
+
+#### korean prediction results
+
+| demo images | [TPS-ResNet-BiLSTM-Attn](https://drive.google.com/open?id=1b59rXuGGmKne1AuHnkgDzoYgKeETNMv9) | [TPS-ResNet-BiLSTM-Attn (case-sensitive)](https://drive.google.com/open?id=1ajONZOgiG9pEYsQ-eBmgkVbMDuHgPCaY) |
+| ---         |     ---      |          --- |
+| <img src="./demo_image/0.jpg" width="300" height="100">      |    서울대역    |   서울대역    |
+| <img src="./demo_image/0_.jpg" width="300" height="100">      |    상설    |   상설    |
+| <img src="./demo_image/2.jpg" width="300" height="100">      |    영어전문학원    |   영어전문학원    |
+| <img src="./demo_image/3.jpg" width="300" height="100">      |    아카데미    |   아카데미    |
+| <img src="./demo_image/5.jpg" width="300" height="100">      |    대형출력인쇄    |   대형출력인쇄    |
+| <img src="./demo_image/demo_1.png" width="300">    |   available   |  Available   |
+| <img src="./demo_image/demo_10.jpg" width="300" height="100">      |    univeneity    |   univeneity    |
+
+<img src="./figures/koreanTest.PNG">
+
+Update Readme tomorrow
+
+--------------------------------------------------------------------------------
+
 # What is wrong with scene text recognition model comparisons? dataset and model analysis
 | [paper](https://arxiv.org/abs/1904.01906) | [training and evaluation data](https://github.com/clovaai/deep-text-recognition-benchmark#download-lmdb-dataset-for-traininig-and-evaluation-from-here) | [failure cases and cleansed label](https://github.com/clovaai/deep-text-recognition-benchmark#download-failure-cases-and-cleansed-label-from-here) | [pretrained model](https://drive.google.com/drive/folders/15WPsuPJDCzhp2SvYZLRj8mAlT3zmoAMW) | [Baidu ver(passwd:rryk)](https://pan.baidu.com/s/1KSNLv4EY3zFWHpBYlpFCBQ) |
 
