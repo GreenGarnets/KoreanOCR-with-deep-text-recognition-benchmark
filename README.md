@@ -15,9 +15,6 @@
 
 We have added Hangul to the project and modified it for reading. trainings studied 500000 sets of Korean and English datasets made using synth text, and the examples of those datasets are as follows.
 
-model downlaod : [TPS-ResNet-BiLSTM-Attn-korean.pth](https://drive.google.com/open?id=1oPnk1NWcyTwKC-IAC9pbk_cctzvwgt0r)
-
-
 | Trainning images | GT text | 
 | ---         |        --- |
 | <img src="./Assets/15.jpg" width="260" height="140">      |    항자원    |  
@@ -26,4 +23,18 @@ model downlaod : [TPS-ResNet-BiLSTM-Attn-korean.pth](https://drive.google.com/op
 | <img src="./Assets/291724.jpg" width="260" height="140">      |    때문에    |  
 | <img src="./Assets/291727.jpg" width="260" height="140">      |    소비가    |  
 
-update soon
+model downlaod : [TPS-ResNet-BiLSTM-Attn-korean.pth](https://drive.google.com/open?id=1oPnk1NWcyTwKC-IAC9pbk_cctzvwgt0r)
+
+If the OCR image is corrected for tilting and further learning, 99.22% of the accuracy of the Hangul OCR was shown, but the model cannot be disclosed due to the research project contract.
+
+|  <center>Predict</center> |  <center>GT</center> |  <center>Result</center> |
+|:--------:|:--------:|:--------:|
+|<center>배산공원 </center> | <center>배산공원 </center> |True |
+|<center>87 </center> | <center>87 </center> |True |
+|<center>300m </center>| <center>300m </center> |True |
+|<center>분당소방서 </center>| <center>분당소방서 </center> |True |
+|<center>시의회 </center>| <center>시의회 </center> |True |
+
+[100000/100000] **Train Loss: 0.00663** elapsed_time: 2609.21140<br>
+[100000/100000] **valid loss: 0.00391** **accuracy: 99.922**, norm_ED: 0.83
+
