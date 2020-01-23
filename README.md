@@ -2,7 +2,7 @@
 
 #### korean prediction results
 
-| demo images | [TPS-ResNet-BiLSTM-Attn korean](https://drive.google.com/open?id=1oPnk1NWcyTwKC-IAC9pbk_cctzvwgt0r) | 
+| demo images | [TPS-ResNet-BiLSTM-Attn korean](https://drive.google.com/file/d/1AOucYNbIvzclpurXVAFiBi7imrNMFjVJ/view?usp=sharing) | 
 | ---         |        --- |
 | <img src="./demo_image/0.jpg" width="400" height="130">      |    서울대역    |  
 | <img src="./demo_image/0_.jpg" width="400" height="130">      |    상설    |  
@@ -13,7 +13,7 @@
 
 <img src="./figures/koreanTest.PNG">
 
-We have added Hangul to the project and modified it for reading. trainings studied 500000 sets of Korean and English datasets made using synth text, and the examples of those datasets are as follows.
+We have added Korean to the project and modified it for reading. trainings studied 500000 sets of [Korean](http://ptak.felk.cvut.cz/public_datasets/SyntText/Korean.zip) and English datasets made using synth text, and the examples of those datasets are as follows.
 
 | Trainning images | GT text | 
 | ---         |        --- |
@@ -23,9 +23,13 @@ We have added Hangul to the project and modified it for reading. trainings studi
 | <img src="./Assets/291724.jpg" width="260" height="140">      |    때문에    |  
 | <img src="./Assets/291727.jpg" width="260" height="140">      |    소비가    |  
 
-model downlaod : [TPS-ResNet-BiLSTM-Attn-korean.pth](https://drive.google.com/open?id=1oPnk1NWcyTwKC-IAC9pbk_cctzvwgt0r)
+After securing the Korean data set, input is required to the Korean string.<br>
+We modified train.py and saved Korean consonants in the file [KoreanCodec.txt](https://github.com/GreenGarnets/KoreanOCR-with-deep-text-recognition-benchmark/blob/master/koreanCodec.txt) so that we could call it up.<br>
 
-If the OCR image is corrected for tilting and further learning, 99.22% of the accuracy of the Hangul OCR was shown, but the model cannot be disclosed due to the research project contract.
+model downlaod : [TPS-ResNet-BiLSTM-Attn-korean.pth](https://drive.google.com/file/d/1AOucYNbIvzclpurXVAFiBi7imrNMFjVJ/view?usp=sharing)
+Please contact me if there is a problem with the model.
+
+If the OCR image is corrected for tilting and further learning, 99.922% of the accuracy of the Korean OCR was shown, but the model cannot be disclosed due to the research project contract. 
 
 |  <center>Predict</center> |  <center>GT</center> |  <center>Result</center> |
 |:--------:|:--------:|:--------:|
